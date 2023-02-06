@@ -1,5 +1,5 @@
 const { isObject, isString } = require('../lib/helpers/check-types.helper');
-const { transformMessages } = require('./helpers/messages.helper');
+const { transformMessages, interpolate } = require('./helpers/messages.helper');
 
 function T9N(config) {
   this.messages = {};
@@ -54,6 +54,16 @@ T9N.prototype.setLocale = function (locale) {
 
 T9N.prototype.translate = function (key, attrs, opt = {}) {
   const locale = opt.locale ?? this.locale;
+
+  if (
+    !this.messages[locale].hasOwnProperty(key) &&
+    this.messages[this.fallbackLocale].hasOwnProperty(key)
+  ) {
+    console.warn(
+      `key ${key} does not exists in locale '${locale}' use '${this.fallbackLocale}' fallback`
+    );
+  }
+
   const text =
     this.messages[locale][key] ?? this.messages[this.fallbackLocale][key];
 
@@ -64,10 +74,7 @@ T9N.prototype.translate = function (key, attrs, opt = {}) {
   }
 
   if (attrs) {
-    return Object.keys(attrs).reduce(
-      (res, current) => res.replace(`{${current}}`, attrs[current]),
-      text
-    );
+    return interpolate(text, attrs);
   }
   return text;
 };

@@ -23,3 +23,10 @@ exports.transformMessages = function transformMessages(messages, opts = {}) {
     });
   }, init);
 };
+
+exports.interpolate = function (text, attrs) {
+  return Object.keys(attrs).reduce(
+    (res, current) => res.replace(`{${current}}`, attrs[current]),
+    text
+  );
+};

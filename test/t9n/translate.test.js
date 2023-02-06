@@ -28,7 +28,11 @@ describe('translate test', () => {
       t9n.translate('action.ask', { question: 'go to the toilet' })
     ).to.equal('I want to go to the toilet');
     expect(
-      t9n.translate('action.prompt', { name: 'jhon', input: 'age' })
+      t9n.translate('action.prompt', {
+        name: 'jhon',
+        input: 'age',
+        answer: 'ok',
+      })
     ).to.equal('Hi jhon, please enter your age');
   });
 
