@@ -20,4 +20,8 @@ T9N.prototype.getMessages = function () {
   return this.messages;
 };
 
+T9N.prototype.getLocaleMessages = function (locale) {
+  return this.messages[locale];
+};
+
 module.exports = T9N;
