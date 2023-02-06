@@ -8,6 +8,10 @@ function T9N(config) {
   }
 }
 
+T9N.prototype.setMessages = function (messages) {
+  this.messages = messages;
+};
+
 T9N.prototype.getMessages = function () {
   return this.messages;
 };
