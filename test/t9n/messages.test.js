@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { describe, it } = require('mocha');
 const T9N = require('../../src/t9n');
-const messages = require('./resources/messages.json')
+const messages = require('./resources/messages.json');
 
 describe('messages test', () => {
   describe('global messages', () => {
@@ -30,7 +30,7 @@ describe('messages test', () => {
       expect(t9n.setMessages).to.be.a('function');
 
       t9n.setMessages(messages);
-      
+
       expect(t9n.getMessages()).to.have.property('en');
       expect(t9n.getMessages()).to.have.property('id');
     });

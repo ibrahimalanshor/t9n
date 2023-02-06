@@ -1,5 +1,5 @@
 const { isObject, isString } = require('../lib/helpers/check-types.helper');
-const { transformMessages } = require('./helpers/messages.helper')
+const { transformMessages } = require('./helpers/messages.helper');
 
 function T9N(config) {
   this.messages = {};
@@ -18,9 +18,9 @@ function T9N(config) {
 
 T9N.prototype.setMessages = function (messages) {
   if (!isObject(messages)) throw new Error('messages must be an object');
-    
+
   this.messages = transformMessages(messages, {
-    root: true
+    root: true,
   });
 };
 
@@ -52,7 +52,7 @@ T9N.prototype.setLocale = function (locale) {
 };
 
 T9N.prototype.translate = function (key, attrs) {
-  const text = this.messages[this.locale][key]
+  const text = this.messages[this.locale][key];
 
   if (attrs) {
     return Object.keys(attrs).reduce(

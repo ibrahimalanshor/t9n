@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { describe } = require('mocha');
 const T9N = require('../../src/t9n');
-const messages = require('./resources/messages.json')
+const messages = require('./resources/messages.json');
 
 describe('translate test', () => {
   it('should have translate method', () => {

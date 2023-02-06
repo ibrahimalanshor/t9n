@@ -1,25 +1,25 @@
 const { isString } = require('../../lib/helpers/check-types.helper');
 
 exports.transformMessages = function transformMessages(messages, opts = {}) {
-    const { root = false } = opts
-    const init = opts.init ?? {}
+  const { root = false } = opts;
+  const init = opts.init ?? {};
 
-    return Object.entries(messages).reduce((res, [prop, val]) => {
-      if (isString(val)) {
-        res[opts.prefix ? `${opts.prefix}.${prop}` : prop] = val
-  
-        return res
-      }
+  return Object.entries(messages).reduce((res, [prop, val]) => {
+    if (isString(val)) {
+      res[opts.prefix ? `${opts.prefix}.${prop}` : prop] = val;
 
-      if (root) {
-        res[prop] = transformMessages(val)
+      return res;
+    }
 
-        return res
-      }
+    if (root) {
+      res[prop] = transformMessages(val);
 
-      return transformMessages(val, {
-        prefix: opts.prefix ? `${opts.prefix}.${prop}` : prop,
-        init: res
-      })
-    }, init)
-  }
+      return res;
+    }
+
+    return transformMessages(val, {
+      prefix: opts.prefix ? `${opts.prefix}.${prop}` : prop,
+      init: res,
+    });
+  }, init);
+};
