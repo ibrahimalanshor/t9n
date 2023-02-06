@@ -48,6 +48,10 @@ T9N.prototype.setLocale = function (locale) {
   this.locale = locale;
 };
 
-T9N.prototype.translate = function () {};
+T9N.prototype.translate = function (key) {
+  return key
+    .split('.')
+    .reduce((res, current) => res[current], this.messages[this.locale]);
+};
 
 module.exports = T9N;
