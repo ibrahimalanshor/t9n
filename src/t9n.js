@@ -12,6 +12,10 @@ T9N.prototype.setMessages = function (messages) {
   this.messages = messages;
 };
 
+T9N.prototype.setLocaleMessages = function (locale, messages) {
+  this.messages[locale] = messages;
+};
+
 T9N.prototype.getMessages = function () {
   return this.messages;
 };
