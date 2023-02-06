@@ -57,6 +57,12 @@ T9N.prototype.translate = function (key, attrs, opt = {}) {
   const text =
     this.messages[locale][key] ?? this.messages[this.fallbackLocale][key];
 
+  if (!text) {
+    console.warn(`key ${key} does not exists in messages list`);
+
+    return key;
+  }
+
   if (attrs) {
     return Object.keys(attrs).reduce(
       (res, current) => res.replace(`{${current}}`, attrs[current]),

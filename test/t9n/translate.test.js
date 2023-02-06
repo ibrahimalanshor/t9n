@@ -16,8 +16,8 @@ describe('translate test', () => {
   });
 
   it('should translate nested key', () => {
-    expect(new T9N({ messages }).translate('action.greet')).to.equal(
-      messages.en.action.greet
+    expect(new T9N({ messages }).translate('greet')).to.equal(
+      messages.en.greet
     );
   });
 
@@ -47,5 +47,12 @@ describe('translate test', () => {
     const t9n = new T9N({ messages, locale: 'id' });
 
     expect(t9n.translate('action.click')).to.equal(messages.en.action.click);
+  });
+
+  it('should return raw key on key not found', () => {
+    const t9n = new T9N({ messages });
+
+    expect(t9n.translate('not-found')).equal('not-found');
+    expect(t9n.translate('action.close')).equal('action.close');
   });
 });
