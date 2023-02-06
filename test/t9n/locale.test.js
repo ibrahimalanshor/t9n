@@ -16,7 +16,22 @@ describe('locale test', () => {
     expect(t9n.getLocale()).to.equal('id');
   });
 
-  it('should thrown on set invlaid default locale from constructor arguments', () => {
+  it('should throw on set invalid default locale from constructor arguments', () => {
     expect(() => new T9N({ locale: false })).to.throw();
+  });
+
+  it('should set locale from with setLocale', () => {
+    expect(new T9N().setLocale).not.to.be.undefined;
+    expect(new T9N().setLocale).to.be.a('function');
+
+    const t9n = new T9N();
+
+    t9n.setLocale('id');
+
+    expect(t9n.getLocale()).to.equal('id');
+  });
+
+  it('should throw on set invalid locale with setLocale', () => {
+    expect(() => new T9N().setLocale(false)).to.throw();
   });
 });

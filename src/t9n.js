@@ -10,10 +10,7 @@ function T9N(config) {
     }
 
     if (config.hasOwnProperty('locale')) {
-      if (!isString(config.locale))
-        throw new Error('config locale must be a string');
-
-      this.locale = config.locale;
+      this.setLocale(config.locale);
     }
   }
 }
@@ -43,6 +40,12 @@ T9N.prototype.getLocaleMessages = function (locale) {
 
 T9N.prototype.getLocale = function () {
   return this.locale;
+};
+
+T9N.prototype.setLocale = function (locale) {
+  if (!isString(locale)) throw new Error('locale must be a string');
+
+  this.locale = locale;
 };
 
 module.exports = T9N;
