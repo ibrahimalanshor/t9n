@@ -42,4 +42,10 @@ describe('translate test', () => {
       messages.id.greet
     );
   });
+
+  it('should use fallback locale if key is not found', () => {
+    const t9n = new T9N({ messages, locale: 'id' });
+
+    expect(t9n.translate('action.click')).to.equal(messages.en.action.click);
+  });
 });

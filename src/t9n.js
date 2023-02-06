@@ -4,6 +4,7 @@ const { transformMessages } = require('./helpers/messages.helper');
 function T9N(config) {
   this.messages = {};
   this.locale = 'en';
+  this.fallbackLocale = 'en';
 
   if (isObject(config)) {
     if (config.hasOwnProperty('messages')) {
@@ -53,7 +54,8 @@ T9N.prototype.setLocale = function (locale) {
 
 T9N.prototype.translate = function (key, attrs, opt = {}) {
   const locale = opt.locale ?? this.locale;
-  const text = this.messages[locale][key];
+  const text =
+    this.messages[locale][key] ?? this.messages[this.fallbackLocale][key];
 
   if (attrs) {
     return Object.keys(attrs).reduce(
