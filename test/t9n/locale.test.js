@@ -15,4 +15,8 @@ describe('locale test', () => {
 
     expect(t9n.getLocale()).to.equal('id');
   });
+
+  it('should thrown on set invlaid default locale from constructor arguments', () => {
+    expect(() => new T9N({ locale: false })).to.throw();
+  });
 });

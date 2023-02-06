@@ -5,11 +5,11 @@ function T9N(config) {
   this.locale = 'en';
 
   if (isObject(config)) {
-    if (config.messages) {
+    if (config.hasOwnProperty('messages')) {
       this.setMessages(config.messages);
     }
 
-    if (config.locale) {
+    if (config.hasOwnProperty('locale')) {
       if (!isString(config.locale))
         throw new Error('config locale must be a string');
 
