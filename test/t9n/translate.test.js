@@ -1,19 +1,9 @@
 const { expect } = require('chai');
 const { describe } = require('mocha');
 const T9N = require('../../src/t9n');
+const messages = require('./resources/messages.json')
 
 describe('translate test', () => {
-  const messages = {
-    en: {
-      hello: 'Hello',
-      action: {
-        greet: 'Hi',
-        ask: 'I want to {question}',
-        prompt: 'Hi {name}, please enter your {input}',
-      },
-    },
-  };
-
   it('should have translate method', () => {
     expect(new T9N().translate).not.to.be.undefined;
     expect(new T9N().translate).to.be.a('function');
