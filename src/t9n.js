@@ -2,6 +2,7 @@ const { isObject } = require('../lib/helpers/check-types.helper');
 
 function T9N(config) {
   this.messages = {};
+  this.locale = 'en';
 
   if (isObject(config)) {
     if (!isObject(config.messages))
@@ -32,6 +33,10 @@ T9N.prototype.getLocaleMessages = function (locale) {
     throw new Error('locale not found');
 
   return this.messages[locale];
+};
+
+T9N.prototype.getLocale = function () {
+  return this.locale;
 };
 
 module.exports = T9N;
