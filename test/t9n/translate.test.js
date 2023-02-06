@@ -31,4 +31,15 @@ describe('translate test', () => {
       t9n.translate('action.prompt', { name: 'jhon', input: 'age' })
     ).to.equal('Hi jhon, please enter your age');
   });
+
+  it('should use override default locale', () => {
+    const t9n = new T9N({ messages });
+
+    expect(t9n.translate('hello', {}, { locale: 'id' })).to.equal(
+      messages.id.hello
+    );
+    expect(t9n.translate('greet', {}, { locale: 'id' })).to.equal(
+      messages.id.greet
+    );
+  });
 });

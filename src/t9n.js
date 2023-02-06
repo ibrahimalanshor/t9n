@@ -51,8 +51,9 @@ T9N.prototype.setLocale = function (locale) {
   this.locale = locale;
 };
 
-T9N.prototype.translate = function (key, attrs) {
-  const text = this.messages[this.locale][key];
+T9N.prototype.translate = function (key, attrs, opt = {}) {
+  const locale = opt.locale ?? this.locale;
+  const text = this.messages[locale][key];
 
   if (attrs) {
     return Object.keys(attrs).reduce(
