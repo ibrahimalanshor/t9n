@@ -9,4 +9,10 @@ describe('locale test', () => {
 
     expect(new T9N().getLocale()).to.equal('en');
   });
+
+  it('should set default locale from constructor arguments', () => {
+    const t9n = new T9N({ locale: 'id' });
+
+    expect(t9n.getLocale()).to.equal('id');
+  });
 });

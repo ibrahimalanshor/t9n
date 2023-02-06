@@ -1,14 +1,20 @@
-const { isObject } = require('../lib/helpers/check-types.helper');
+const { isObject, isString } = require('../lib/helpers/check-types.helper');
 
 function T9N(config) {
   this.messages = {};
   this.locale = 'en';
 
   if (isObject(config)) {
-    if (!isObject(config.messages))
-      throw new Error('config messages must be an object');
+    if (config.messages) {
+      this.setMessages(config.messages);
+    }
 
-    this.messages = config.messages;
+    if (config.locale) {
+      if (!isString(config.locale))
+        throw new Error('config locale must be a string');
+
+      this.locale = config.locale;
+    }
   }
 }
 
