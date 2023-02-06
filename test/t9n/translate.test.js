@@ -8,6 +8,8 @@ describe('translate test', () => {
       hello: 'Hello',
       action: {
         greet: 'Hi',
+        ask: 'I want to {question}',
+        prompt: 'Hi {name}, please enter your {input}',
       },
     },
   };
@@ -27,5 +29,16 @@ describe('translate test', () => {
     expect(new T9N({ messages }).translate('action.greet')).to.equal(
       messages.en.action.greet
     );
+  });
+
+  it('should translate interpolated key', () => {
+    const t9n = new T9N({ messages });
+
+    expect(
+      t9n.translate('action.ask', { question: 'go to the toilet' })
+    ).to.equal('I want to go to the toilet');
+    expect(
+      t9n.translate('action.prompt', { name: 'jhon', input: 'age' })
+    ).to.equal('Hi jhon, please enter your age');
   });
 });
