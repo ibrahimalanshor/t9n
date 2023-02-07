@@ -1,6 +1,6 @@
 {
   "name": "t9n",
-  "description": "",
+  "description": "Translation",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -11,8 +11,8 @@
     "type": "git",
     "url": "git+https://github.com/ibrahimalanshor/t9n.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["t9n", "translation"],
+  "author": "Ibrahimalanshor",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ibrahimalanshor/t9n/issues"
