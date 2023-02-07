@@ -14,6 +14,10 @@ function T9N(config) {
     if (config.hasOwnProperty('locale')) {
       this.setLocale(config.locale);
     }
+
+    if (config.hasOwnProperty('fallbackLocale')) {
+      this.setFallbackLocale(config.fallbackLocale);
+    }
   }
 }
 
@@ -50,6 +54,17 @@ T9N.prototype.setLocale = function (locale) {
   if (!isString(locale)) throw new Error('locale must be a string');
 
   this.locale = locale;
+};
+
+T9N.prototype.getFallbackLocale = function () {
+  return this.fallbackLocale;
+};
+
+T9N.prototype.setFallbackLocale = function (fallbackLocale) {
+  if (!isString(fallbackLocale))
+    throw new Error('fallback locale must be a string');
+
+  this.fallbackLocale = fallbackLocale;
 };
 
 T9N.prototype.translate = function (key, attrs, opt = {}) {
