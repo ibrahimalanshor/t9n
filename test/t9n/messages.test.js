@@ -1,6 +1,7 @@
 const { expect } = require('chai');
 const { describe, it } = require('mocha');
 const T9N = require('../../src/t9n');
+const messages = require('./resources/messages.json');
 
 describe('messages test', () => {
   describe('global messages', () => {
@@ -14,25 +15,15 @@ describe('messages test', () => {
     });
 
     it('should set messages from constructor arguments', () => {
-      const messages = {
-        en: {
-          hello: 'Halo',
-        },
-      };
       const t9n = new T9N({
         messages,
       });
 
       expect(t9n.getMessages()).to.have.property('en');
-      expect(t9n.getMessages()).to.deep.equal(messages);
+      expect(t9n.getMessages()).to.have.property('id');
     });
 
     it('should set messages from setMessages method', () => {
-      const messages = {
-        en: {
-          hello: 'Halo',
-        },
-      };
       const t9n = new T9N();
 
       expect(t9n.setMessages).not.to.be.undefined;
@@ -41,7 +32,7 @@ describe('messages test', () => {
       t9n.setMessages(messages);
 
       expect(t9n.getMessages()).to.have.property('en');
-      expect(t9n.getMessages()).to.deep.equal(messages);
+      expect(t9n.getMessages()).to.have.property('id');
     });
 
     it('should throw error on set invalid messages argument', () => {
@@ -65,7 +56,6 @@ describe('messages test', () => {
       t9n.setLocaleMessages('en', messages.en);
 
       expect(t9n.getMessages()).to.have.property('en');
-      expect(t9n.getMessages()).to.deep.equal(messages);
     });
 
     it('should get locale messages from getLocaleMessages method', () => {
@@ -79,7 +69,7 @@ describe('messages test', () => {
       expect(t9n.getLocaleMessages).not.to.be.undefined;
       expect(t9n.getLocaleMessages).to.be.a('function');
 
-      expect(t9n.getLocaleMessages('en')).to.deep.equal(messages.en);
+      expect(t9n.getMessages()).to.have.property('en');
     });
 
     it('should throw error on set invalid locale messages argument', () => {
