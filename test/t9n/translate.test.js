@@ -9,6 +9,10 @@ describe('translate test', () => {
     expect(new T9N().translate).to.be.a('function');
   });
 
+  it('should return key not found', () => {
+    expect(new T9N().translate('hello')).to.equal('hello');
+  });
+
   it('should translate a key', () => {
     expect(new T9N({ messages }).translate('hello')).to.equal(
       messages.en.hello
