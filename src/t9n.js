@@ -2,7 +2,9 @@ const { isObject, isString } = require('../lib/helpers/check-types.helper');
 const { transformMessages, interpolate } = require('./helpers/messages.helper');
 
 function T9N(config) {
-  this.messages = {};
+  this.messages = {
+    en: {},
+  };
   this.locale = 'en';
   this.fallbackLocale = 'en';
 
